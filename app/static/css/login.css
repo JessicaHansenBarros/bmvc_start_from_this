@@ -112,3 +112,23 @@ body{
     color: #0D2618;
     text-decoration: underline;
 }
+
+.alerta-login-erro {
+    background-color: #ffe6e6;
+    color: #b30000;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #ff9999;
+}
+
+.alerta-login-sucesso {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #c3e6cb;
+}

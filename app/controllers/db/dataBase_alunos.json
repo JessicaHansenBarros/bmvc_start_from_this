@@ -1,22 +1,36 @@
 [
     {
-        "nome": "Arthur Santana",
-        "data_aula": "14/10/26",
+        "nome": "Caike Davi",
+        "data_aula": "20/12/24",
+        "id_professor": 1,
+        "tipo_de_aula": "Fundamental Individual",
+        "valor": 16.54
+    },
+    {
+        "nome": "Julio Ferreira",
+        "data_aula": "25/09/26",
+        "id_professor": 3,
+        "tipo_de_aula": "Fundamental Individual",
+        "valor": 16.54
+    },
+    {
+        "nome": "Caio",
+        "data_aula": "26/09/26",
         "id_professor": 2,
         "tipo_de_aula": "Fundamental Individual",
         "valor": 16.54
     },
     {
         "nome": "Arthur Santana",
-        "data_aula": "17/11/26",
-        "id_professor": null,
-        "tipo_de_aula": "Fundamental Individual",
-        "valor": 16.54
+        "data_aula": "25/10/26",
+        "id_professor": 1,
+        "tipo_de_aula": "Fundamental Coletivo",
+        "valor": 9.92
     },
     {
-        "nome": "Caike Davi",
-        "data_aula": "18/11/26",
-        "id_professor": 1,
+        "nome": "Arthur Santana",
+        "data_aula": "17/11/26",
+        "id_professor": null,
         "tipo_de_aula": "Fundamental Individual",
         "valor": 16.54
     },

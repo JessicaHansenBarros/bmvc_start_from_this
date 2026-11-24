@@ -12,5 +12,12 @@
         "email": "jessica@gmail.com",
         "login": "jessica",
         "senha": "hansen"
+    },
+    {
+        "id": 3,
+        "nome": "Tapioca",
+        "email": "tapioca@gmail.com",
+        "login": "tapioca",
+        "senha": "doce"
     }
 ]
