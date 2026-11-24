@@ -37,38 +37,74 @@ def helper(info=None):
 @app.route('/')
 @app.route('/portal')
 def portal():
-    aba = request.query.get('aba', 'adicionar')
-    return ctl.portal(aba=aba)
+    aba = request.query.getunicode('aba') or 'adicionar'
+    indice = request.query.getunicode('indice')
+    return ctl.portal(aba=aba, indice_selecionado=indice)
 
 @app.route('/portal', method='POST')
 def portal_login():
-    login = request.forms.get('login') or request.forms.get('usuario')
-    senha = request.forms.get('senha')
+    login = request.forms.getunicode('login') or request.forms.getunicode('usuario')
+    senha = request.forms.getunicode('senha')
     return ctl.autenticar(login, senha)
+
+@app.route('/cadastro', method=['GET', 'POST'])
+def cadastro():
+    if request.method == 'POST':
+        nome = request.forms.getunicode('nome')
+        email = request.forms.getunicode('email')
+        login = request.forms.getunicode('login')
+        senha = request.forms.getunicode('senha')
+        return ctl.cadastrar_professor(nome, email, login, senha)
+    return ctl.pagina_cadastro()
 
 @app.route('/portal/adicionar', method='POST')
 def portal_adicionar():
-    nome_aluno = request.forms.get('nome_aluno')
-    opcao_tipo = request.forms.get('opcao_tipo')
-    data_aula = request.forms.get('data_aula')
+    nome_aluno = request.forms.getunicode('nome_aluno')
+    opcao_tipo = request.forms.getunicode('opcao_tipo')
+    data_aula = request.forms.getunicode('data_aula')
     return ctl.adicionar_aluno(nome_aluno, opcao_tipo, data_aula)
 
 @app.route('/portal/salario', method=['GET', 'POST'])
 def portal_salario():
     if request.method == 'POST':
-        tem_vt = request.forms.get('tem_vt')
+        tem_vt = request.forms.getunicode('tem_vt')
         return ctl.calcular_salario(tem_vt)
     return ctl.portal(aba='salario')
 
 @app.route('/portal/alterar', method=['GET', 'POST'])
 def portal_alterar():
     if request.method == 'POST':
-        indice = request.forms.get('indice')
-        novo_nome = request.forms.get('novo_nome')
-        nova_data = request.forms.get('nova_data')
-        nova_opcao = request.forms.get('nova_opcao')
+        indice = request.forms.getunicode('indice')
+        novo_nome = request.forms.getunicode('novo_nome')
+        nova_data = request.forms.getunicode('nova_data')
+        nova_opcao = request.forms.getunicode('nova_opcao')
         return ctl.alterar_aluno(indice, novo_nome, nova_data, nova_opcao)
-    return ctl.portal(aba='alterar')
+    indice = request.query.getunicode('indice')
+    return ctl.portal(aba='alterar', indice_selecionado=indice)
+
+@app.route('/portal/excluir', method=['GET', 'POST'])
+def portal_excluir():
+    if request.method == 'POST':
+        indice = request.forms.getunicode('indice')
+        aba_retorno = request.forms.getunicode('aba_retorno') or 'excluir'
+        return ctl.remover_aluno(indice, aba_retorno=aba_retorno)
+    return ctl.portal(aba='excluir')
+
+@app.route('/portal/perfil')
+def portal_perfil():
+    return ctl.portal(aba='perfil')
+
+@app.route('/portal/perfil/atualizar', method='POST')
+def portal_perfil_atualizar():
+    nome = request.forms.getunicode('nome')
+    email = request.forms.getunicode('email')
+    login = request.forms.getunicode('login')
+    nova_senha = request.forms.getunicode('nova_senha')
+    return ctl.atualizar_professor(nome, email, login, nova_senha)
+
+@app.route('/portal/perfil/excluir', method='POST')
+def portal_perfil_excluir():
+    return ctl.excluir_professor()
 
 @app.route('/portal/fim-do-mes', method='POST')
 def portal_fim_do_mes():

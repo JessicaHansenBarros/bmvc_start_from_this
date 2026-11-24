@@ -28,8 +28,14 @@
 
     <main class="container-login">
         <form class="card-login" action="/portal" method="POST">
+            % if defined('mensagem') and mensagem:
+                <div class="alerta-login-sucesso">
+                    {{ mensagem }}
+                </div>
+            % end
+
             % if defined('erro') and erro:
-                <div style="background-color: #ffe6e6; color: #b30000; padding: 10px; border-radius: 8px; text-align: center; font-weight: bold; border: 1px solid #ff9999;">
+                <div class="alerta-login-erro">
                     {{ erro }}
                 </div>
             % end
@@ -47,7 +53,7 @@
             <button type="submit" class="btn-logar">Logar</button>
 
             <p class="texto-cadastro">
-                Novo aqui? <a href="#">Criar conta</a>
+                Novo aqui? <a href="/cadastro">Criar conta</a>
             </p>
         </form>
     </main>
