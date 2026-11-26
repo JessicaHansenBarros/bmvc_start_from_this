@@ -11,8 +11,8 @@ for p in [BASE_DIR, MODELS_DIR]:
         sys.path.insert(0, p)
 
 from app.controllers.application import Application
-from bottle import Bottle, route, run, request, static_file
-from bottle import redirect, template, response
+from app.controllers.websocket_server import BottleWebSocketServer
+from bottle import Bottle, request, run, static_file
 
 
 app = Bottle()
@@ -117,5 +117,13 @@ def sair():
 #-----------------------------------------------------------------------------
 
 if __name__ == '__main__':
-
-    run(app, host='0.0.0.0', port=8080, debug=True, reloader=True)
+    ws_server = BottleWebSocketServer(
+        host='0.0.0.0',
+        port=8080,
+        hub=ctl.ws_hub,
+        resolve_session=ctl.get_professor_id_by_session,
+        on_connect=ctl.ws_on_connect,
+        on_message=ctl.ws_on_message,
+        on_disconnect=ctl.ws_on_disconnect,
+    )
+    run(app, server=ws_server, host='0.0.0.0', port=8080, debug=True, reloader=True)

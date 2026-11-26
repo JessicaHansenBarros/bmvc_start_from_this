@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inder&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/login.css">
     <link rel="stylesheet" href="/static/css/header.css">
+    <script src="/static/js/auth.js" defer></script>
 </head>
 <body>
 

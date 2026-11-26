@@ -132,3 +132,31 @@ body{
     font-weight: bold;
     border: 1px solid #c3e6cb;
 }
+
+.senha-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.senha-wrapper input {
+    width: 100%;
+    padding-right: 78px;
+}
+
+.btn-toggle-senha {
+    position: absolute;
+    right: 8px;
+    background: #edf2f7;
+    color: #1C3D2B;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-toggle-senha:hover {
+    background: #e2e8f0;
+}
